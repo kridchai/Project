@@ -19,6 +19,7 @@ public class FactorySimulation {
             }
             catch(Exception e){
                 System.out.println("File not found.");
+                 System.out.printf("%s Enter product specification file = ",Thread.currentThread().getName());
             }
         }
         while(Input.hasNext()){
