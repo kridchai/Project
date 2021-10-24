@@ -20,6 +20,8 @@ public class FactorySimulation {
             catch(Exception e){
                 System.out.println("File not found.");
                  System.out.printf("%s Enter product specification file = ",Thread.currentThread().getName());
+                Scanner s = new Scanner(System.in);
+                FileName = s.next();  
             }
         }
         while(Input.hasNext()){
@@ -30,7 +32,6 @@ public class FactorySimulation {
         
         Input.close();
         // finish read file
-       // Factory[] f = new Factory(buff.length-1);
         
          ArrayList<Factory> FactoryAl = new ArrayList<Factory>();
         
