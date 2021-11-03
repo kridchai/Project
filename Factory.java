@@ -3,7 +3,7 @@ public class Factory extends Thread implements Comparable<Factory>{
     private  int ID, lotsize,size = 0,lotDone;
     public int thread;
     private String product;
-    private  int[] required;
+    private  int[] required,remain;
     private OneShareMaterial[] material;
 
     public Factory(String id,String product,String lot){
@@ -17,7 +17,7 @@ public class Factory extends Thread implements Comparable<Factory>{
       int n=  0;
       for(int i=1;i<row;i++){
           for(int j=3;j<colum;j++){
-              required[n] = Integer.parseInt([i][j]);//buff มันเป็น stringอะ รับมาแล้วค่อย parseintได้มะ
+              required[n] = Integer.parseInt(re[i][j]);//buff มันเป็น stringอะ รับมาแล้วค่อย parseintได้มะ
               n +=1;//ได้ๆ
           }
         
