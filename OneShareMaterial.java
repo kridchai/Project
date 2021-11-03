@@ -11,7 +11,7 @@ public class OneShareMaterial {
   }
 
   //this methods get 
-  public int get(int n){
+  public  synchronized int get(int n){
     int temp = 0;
     if (balance >= n){
       balance -= n;
@@ -21,6 +21,7 @@ public class OneShareMaterial {
       temp = balance;
       balance = 0;
     }
+     System.out.printf("%s >> Get %3d %s    balance = %3d %s\n",Thread.currentThread().getName(),temp,name,balance,name);
      return temp;  
     
   }

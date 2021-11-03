@@ -37,8 +37,10 @@ public class Factory extends Thread implements Comparable<Factory>{
 
     }
     public void setBalance(int n){
-      for(int i =0;i<size;i++)
-        material[i].setBlance(n);
+      for(int i =0;i<size;i++){
+         material[i].setBlance(n);
+      }
+       
 
     }
     public void printSummary(){
@@ -50,7 +52,55 @@ public class Factory extends Thread implements Comparable<Factory>{
 
 
    public void run(){
+     int temp;
+     if(isAllZero(required)){
+       for(int i =0;i<size;i++){
+          temp = material[i].get(required[i]);
+          remain[i] = required[i]-temp;
+        }
+        if(isAllZero(required)){
+          lotDone +=1;
+          System.out.printf("Thread %s >> complete Lot %d\n",Thread.currentThread().getName(),lotDone);
+
+        }
+        else
+           System.out.printf("Thread------Fail\n",Thread.currentThread().getName());
+     }
+     else{
+       for(int i =0;i<size;i++){
+          temp = material[i].get(remain[i]);
+          remain[i] -= temp;
+        }
+        if(isAllZero(required)){
+          lotDone +=1;
+          System.out.printf("Thread %s >> complete Lot %d\n",Thread.currentThread().getName(),lotDone);
+
+        }
+        else
+           System.out.printf("Thread------Fail\n",Thread.currentThread().getName());
+
+
+     }
      
+   }
+
+   public boolean isAllZero(int r[]){
+     int check = 1; 
+     for(int i = 0;i<r.length;i++){
+       if(r[i]!=0)
+        check = 0;
+
+     }
+     if(check==0)
+        return false;
+     else
+        return true;
+
+   }
+
+   public int compareTo(Factory other){
+     return 0;//do not finished
+
    }
 }              
                
