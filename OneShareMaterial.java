@@ -1,6 +1,5 @@
 public class OneShareMaterial {
   //set variables ------------------------
-  private int id;
   private String name;
   private int balance;
 
@@ -21,13 +20,14 @@ public class OneShareMaterial {
       temp = balance;
       balance = 0;
     }
-     System.out.printf("%s >> Get %3d %s    balance = %3d %s\n",Thread.currentThread().getName(),temp,name,balance,name);
+     System.out.printf("Thread %s >> Get %3d %s    balance = %3d %s\n",Thread.currentThread().getName(),temp,name,balance,name);
      return temp;  
     
   }
 
   public void put(int n){
     balance += n;
+     System.out.printf("Thread %s >> Put %3d %s    balance = %3d %s\n",Thread.currentThread().getName(),n,name,balance,name);
   }
 
   public void setBlance(int n){

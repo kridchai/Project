@@ -48,9 +48,6 @@ public class Factory extends Thread implements Comparable<Factory>{
 
 
     }
-
-
-
    public void run(){
      int temp;
      if(isAllZero(required)){
