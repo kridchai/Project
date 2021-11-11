@@ -27,6 +27,7 @@ public class Factory extends Thread implements Comparable<Factory>{
       int n=  0;
       required = new int[colum-3];
       material = new OneShareMaterial[colum-3];
+      remain = new int[colum-3];
           for(int j=3;j<colum;j++){
               required[n] = lotsize*Integer.parseInt(re[row][j]);//buff มันเป็น stringอะ รับมาแล้วค่อย parseintได้มะ
               n +=1;//ได้ๆ
