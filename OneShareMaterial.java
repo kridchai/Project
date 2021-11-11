@@ -25,6 +25,7 @@ public class OneShareMaterial {
     
   }
 
+
   public void put(int n){
     balance += n;
      System.out.printf("Thread %s >> Put %3d %s    balance = %3d %s\n",Thread.currentThread().getName(),n,name,balance,name);

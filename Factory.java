@@ -13,32 +13,47 @@ public class Factory extends Thread implements Comparable<Factory>{
       lotsize=Integer.parseInt(lot);
      
    }
+
+ /*  public Factory(int id,String product,int lot){
+      super(product);
+      this.product = product;
+      ID = id;
+      lotsize=lot;
+     
+   }*/
+
+   
     public void setRequire(String[][] re,int row,int colum){
       int n=  0;
-      for(int i=1;i<row;i++){
+      required = new int[colum-3];
+      material = new OneShareMaterial[colum-3];
           for(int j=3;j<colum;j++){
-              required[n] = Integer.parseInt(re[i][j]);//buff มันเป็น stringอะ รับมาแล้วค่อย parseintได้มะ
+              required[n] = lotsize*Integer.parseInt(re[row][j]);//buff มันเป็น stringอะ รับมาแล้วค่อย parseintได้มะ
               n +=1;//ได้ๆ
           }
         
-      }
+      
    }
     public void setMaterial(OneShareMaterial m){
       material[size] = m;
       size+=1;
    }
+
+
     public void printIntro(){
       System.out.printf("Thread %s >> %s factory   %d units per lot   materials per lot =",Thread.currentThread().getName(),product,lotsize);
       for(int i = 0;i<size-1;i++){
-        System.out.printf("%3d %s, ",required[i],material[i].getName());
+        System.out.printf("%3d %s, \n",required[i],material[i].getName());
 
       }
-      System.out.printf("%3d %s\n",required[size],material[size].getName());
+      System.out.printf("%3d %s\n",required[size-1],material[size-1].getName());
 
     }
+    
+
     public void setBalance(int n){
       for(int i =0;i<size;i++){
-         material[i].setBlance(n);
+         material[i].put(n);
       }
        
 
@@ -80,6 +95,7 @@ public class Factory extends Thread implements Comparable<Factory>{
      }
      
    }
+   
 
    public boolean isAllZero(int r[]){
      int check = 1; 
@@ -95,9 +111,26 @@ public class Factory extends Thread implements Comparable<Factory>{
 
    }
 
-   public int compareTo(Factory other){
-     return 0;//do not finished
 
+   public int compareTo(Factory other){
+
+     return 0;//do not finished
    }
+
+   public int getID(){
+     return ID;
+   }
+   public String getProduct(){
+     return product;
+   }
+
+  public int getLot(){
+    return lotsize;
+  } 
+  public int getDone(){
+    return lotDone;
+  }
+    
+    //ขาดทำgetที่เหลือกับ setตัวอื่นที่ไม่อยู่ในconstructor
 }              
                

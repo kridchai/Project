@@ -3,45 +3,59 @@ import java.util.*;
 public class FactorySimulation {
     public static void main(String[] args){
        
-        int check = 0,n=0,nMat,day;
-        Scanner Input = null,sc;
-        String buff[][] = null;
-        String FileName = null ;
-        System.out.printf("%s Enter product specification file = ",Thread.currentThread().getName());
-        sc = new Scanner(System.in);
-        nMat = sc.nextInt();
-        
+       int check = 0,n=0,nMat,day;
+        Scanner Input = null;
+        String[][] buff = new String[10][] ;
+        String[][] tan = new String[10][10];
+        String FileName = "this" ;
+        System.out.printf("Thread %s >> Enter product specification file = ",Thread.currentThread().getName());
+        Scanner sc = new Scanner(System.in);
+        FileName = sc.next();
+          
         while(check==0){
+            
             try{
                 Input = new Scanner(new File(FileName));
                 check = 1;
+           
             }
-            catch(Exception e){
+            
+            catch(FileNotFoundException e){
+      
                 System.out.println("File not found.");
-                 System.out.printf("%s Enter product specification file = ",Thread.currentThread().getName());
+                 System.out.printf("Thread %s >> Enter product specification file = ",Thread.currentThread().getName());
                 Scanner s = new Scanner(System.in);
                 FileName = s.next();  
             }
+      
+              
         }
         while(Input.hasNext()){
             String line = Input.nextLine();
-            buff[n] = line.split(",");
+            buff[n] = new String[line.split(",").length];
+            buff[n] =line.split(",");
+            for(int i = 0;i<buff[n].length;i++)
+              buff[n][i] = buff[n][i].trim();
+           // tan[n]=buff[n];
+           // System.out.printf("%s",buff[n][0]);
+            //System.out.println();
             n+=1;
-
-        }
+            }
+       
+        //Scanner sc = new Scanner(System.in);
+       // nMat = sc.nextInt(); 
+         
         
-        Input.close();
+       
         // finish read file
+        System.out.printf("%s",buff[n][0]);
+        // System.out.println();
+         
+         ArrayList<Factory> FactoryAl = new ArrayList<Factory>();
         
-         ArrayList<Factory> FactoryAl = new ArrayList<Factory>(2);
         
-        for(int i = 0;i<FactoryAl.size();i++){
+        for(int i = 0;i<n;i++){
            Factory f = new Factory(buff[i+1][0],buff[i+1][1],buff[i+1][2]);
-           // basis constructor class Factory e.g Factory(1,"Handbag",10)
-          /*if(j=0;j<n;j++){
-          f.addrequired(buff[i+1][3+j],j);
-
-          }*/
            FactoryAl.add(f);
         }
         int row= buff.length;
@@ -63,34 +77,35 @@ public class FactorySimulation {
         for(int i = 0;i<FactoryAl.size();i++)
            FactoryAl.get(i).printIntro();   /// Additional method in factory class need output like line3-5 in pdf file
         
-        System.out.printf("%s >>Enter amount of material per day = ",Thread.currentThread().getName());
+        System.out.printf("Thread %s >>Enter amount of material per day = ",Thread.currentThread().getName());
         nMat = sc.nextInt();
       
         
-        System.out.printf("%s >>Enter number of days = ",Thread.currentThread().getName());
+        System.out.printf("Thread %s >>Enter number of days = ",Thread.currentThread().getName());
         day = sc.nextInt();
         
         for(int i = 0;i<day;i++){
-            System.out.printf("%s >>day %d\n",Thread.currentThread().getName(),i+1);
+            System.out.printf("Thread %s >>day %d\n",Thread.currentThread().getName(),i+1);
             for(int j = 0;j<FactoryAl.size();i++)
                 FactoryAl.get(j).setBalance(nMat);/// Additional method in both factory class and Material class
             System.out.println();
             for(int j = 0;j<FactoryAl.size();i++)
                 FactoryAl.get(j).start();
-            
+                            
             for(int j = 0;j<FactoryAl.size();j++){
                 try{FactoryAl.get(j).join();}
                 catch (InterruptedException e) { }
                 //FactoryAl.reset() Implement this method later by sub
         
-            }
+            } 
         }
         
         System.out.printf("%s >>Summary\n",Thread.currentThread().getName());
-        FactoryAl.sort();//Implement comparable 
+        //FactoryAl.sort();//Implement comparable 
         for(int i = 0;i<FactoryAl.size();i++)
             FactoryAl.get(i).printSummary();///// Additional method in factory class
         
     
     }
 }
+
