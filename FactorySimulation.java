@@ -48,14 +48,14 @@ public class FactorySimulation {
         
        
         // finish read file
-        System.out.printf("%s",buff[n][0]);
+       // System.out.printf("%s",buff[n][0]);
         // System.out.println();
          
          ArrayList<Factory> FactoryAl = new ArrayList<Factory>();
         
         
         int count = 1;
-        for(int i = 0;i<n;i++){
+        for(int i = 0;i<n-1;i++){
            Factory f = new Factory(buff[count][0],buff[count][1],buff[count][2]);
            FactoryAl.add(f);
            count+=1;

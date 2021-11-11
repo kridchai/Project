@@ -55,6 +55,7 @@ public class Factory extends Thread implements Comparable<Factory>{
     public void setBalance(int n){
       for(int i =0;i<size;i++){
          material[i].put(n);
+         System.out.println(""+size);
       }
        
 
