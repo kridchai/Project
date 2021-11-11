@@ -54,9 +54,11 @@ public class FactorySimulation {
          ArrayList<Factory> FactoryAl = new ArrayList<Factory>();
         
         
+        int count = 1;
         for(int i = 0;i<n;i++){
-           Factory f = new Factory(buff[i+1][0],buff[i+1][1],buff[i+1][2]);
+           Factory f = new Factory(buff[count][0],buff[count][1],buff[count][2]);
            FactoryAl.add(f);
+           count+=1;
         }
         int row= buff.length;
         int colum= buff[1].length;
