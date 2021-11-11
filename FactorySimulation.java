@@ -60,10 +60,10 @@ public class FactorySimulation {
            FactoryAl.add(f);
            count+=1;
         }
-        int row= buff.length;
+      //  int row= n;
         int colum= buff[1].length;
         for(int i = 0;i<FactoryAl.size();i++)
-          FactoryAl.get(i).setRequire(buff,row,colum); /// Additional method in factory class
+          FactoryAl.get(i).setRequire(buff,i+1,colum); /// Additional method in factory class
   
 
         OneShareMaterial[] m = new OneShareMaterial[buff[0].length];
