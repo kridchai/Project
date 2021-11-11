@@ -67,12 +67,15 @@ public class Factory extends Thread implements Comparable<Factory>{
     }
    public void run(){
      int temp;
-     if(isAllZero(required)){
+     if(isAllZero(remain)){
+      for(int i = 0;i<required.length;i++)
+          remain[i] = required[i];
+
        for(int i =0;i<size;i++){
           temp = material[i].get(required[i]);
-          remain[i] = required[i]-temp;
+          remain[i] = remain[i]-temp;
         }
-        if(isAllZero(required)){
+        if(isAllZero(remain)){
           lotDone +=1;
           System.out.printf("Thread %s >> complete Lot %d\n",Thread.currentThread().getName(),lotDone);
 
@@ -85,7 +88,7 @@ public class Factory extends Thread implements Comparable<Factory>{
           temp = material[i].get(remain[i]);
           remain[i] -= temp;
         }
-        if(isAllZero(required)){
+        if(isAllZero(remain)){
           lotDone +=1;
           System.out.printf("Thread %s >> complete Lot %d\n",Thread.currentThread().getName(),lotDone);
 

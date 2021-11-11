@@ -88,10 +88,10 @@ public class FactorySimulation {
         
         for(int i = 0;i<day;i++){
             System.out.printf("Thread %s >>day %d\n",Thread.currentThread().getName(),i+1);
-            for(int j = 0;j<FactoryAl.size();i++)
-                FactoryAl.get(j).setBalance(nMat);/// Additional method in both factory class and Material class
+            //for(int j = 0;j<FactoryAl.size()-2;j++)
+                FactoryAl.get(0).setBalance(nMat);/// Additional method in both factory class and Material class
             System.out.println();
-            for(int j = 0;j<FactoryAl.size();i++)
+            for(int j = 0;j<FactoryAl.size();j++)
                 FactoryAl.get(j).start();
                             
             for(int j = 0;j<FactoryAl.size();j++){
@@ -103,7 +103,7 @@ public class FactorySimulation {
         }
         
         System.out.printf("%s >>Summary\n",Thread.currentThread().getName());
-        //FactoryAl.sort();//Implement comparable 
+        FactoryAl.sort();//Implement comparable 
         for(int i = 0;i<FactoryAl.size();i++)
             FactoryAl.get(i).printSummary();///// Additional method in factory class
         
