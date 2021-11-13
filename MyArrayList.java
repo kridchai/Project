@@ -62,7 +62,7 @@ for(int k=0;k<day2.length;k++){
   Factory []Next = new Factory[this.size()];
   int n = this.size();
   for(int i = 0;i<this.size();i++){
-    Next[i] = new Factory(this.get(i).getID(), this.get(i).getProduct(), this.get(i).getLot(), this.get(i).getSize(), this.get(i).getDone(), this.get(i).getRemain(), this.get(i).getRemain(), this.get(i).getMaterials());
+    Next[i] = new Factory(this.get(i).getID(), this.get(i).getProduct(), this.get(i).getLot(), this.get(i).getSize(), this.get(i).getDone(), this.get(i).getRequire(), this.get(i).getRemain(), this.get(i).getMaterials());
 
   }
   this.clear();

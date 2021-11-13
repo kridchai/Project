@@ -30,7 +30,18 @@ public class Factory extends Thread implements Comparable<Factory>{
         this.material[i] = material[i];
 
       }
-      
+      /* for(int i = 0;i<size;i++){
+         System.out.println( "this require" + this.required[i]);
+          System.out.println( "require" + required[i]);
+          System.out.println( "this remain "+ this.remain[i]);
+          System.out.println( "remain "+ remain[i]);
+          // System.out.println( this.material[i] +material[i]);
+       
+      //  this.remain[i] = remain[i];
+       // this.material[i] = material[i];
+
+     }
+       */
       
 
      
