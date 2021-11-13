@@ -51,7 +51,7 @@ public class FactorySimulation {
        // System.out.printf("%s",buff[n][0]);
         // System.out.println();
          
-         ArrayList<Factory> FactoryAl = new ArrayList<Factory>();
+         MyArrayList FactoryAl = new MyArrayList();
         
         
         int count = 1;
@@ -85,7 +85,8 @@ public class FactorySimulation {
         
         System.out.printf("Thread %s >>Enter number of days = ",Thread.currentThread().getName());
         day = sc.nextInt();
-        
+       // MyArrayList day2 = new MyArrayList();
+
         for(int i = 0;i<day;i++){
             System.out.printf("Thread %s >>day %d\n",Thread.currentThread().getName(),i+1);
             //for(int j = 0;j<FactoryAl.size()-2;j++)
@@ -97,17 +98,22 @@ public class FactorySimulation {
             for(int j = 0;j<FactoryAl.size();j++){
                 try{FactoryAl.get(j).join();}
                 catch (InterruptedException e) { }
-                //FactoryAl.reset() Implement this method later by sub
+                //MyArrayList();
+               
+               // day2.reSet();
+                //Implement this method later by sub
         
-            } 
+            }
+             FactoryAl.reSet();  
         }
         
         System.out.printf("%s >>Summary\n",Thread.currentThread().getName());
-        FactoryAl.sort();//Implement comparable 
+        Collections.sort(FactoryAl);//Implement comparable 
         for(int i = 0;i<FactoryAl.size();i++)
             FactoryAl.get(i).printSummary();///// Additional method in factory class
         
     
     }
 }
+
 

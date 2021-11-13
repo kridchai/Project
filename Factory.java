@@ -14,13 +14,27 @@ public class Factory extends Thread implements Comparable<Factory>{
      
    }
 
- /*  public Factory(int id,String product,int lot){
+   public Factory(int id,String product,int lot,int size,int done,int[] required,int[] remain,OneShareMaterial[] material){
       super(product);
       this.product = product;
-      ID = id;
-      lotsize=lot;
+      this.ID = id;
+      this.lotsize=lot;
+      this.size = size;
+      this.lotDone = done;
+      this.required = new int[size];
+      this.remain = new int[size];
+      this.material = new OneShareMaterial[size];
+      for(int i = 0;i<size;i++){
+        this.required[i] = required[i];
+        this.remain[i] = remain[i];
+        this.material[i] = material[i];
+
+      }
+      
+      
+
      
-   }*/
+   }
 
    
     public void setRequire(String[][] re,int row,int colum){
@@ -81,7 +95,7 @@ public class Factory extends Thread implements Comparable<Factory>{
 
         }
         else
-           System.out.printf("Thread------Fail\n",Thread.currentThread().getName());
+           System.out.printf("Thread %s------Fail\n",Thread.currentThread().getName());
      }
      else{
        for(int i =0;i<size;i++){
@@ -94,7 +108,7 @@ public class Factory extends Thread implements Comparable<Factory>{
 
         }
         else
-           System.out.printf("Thread------Fail\n",Thread.currentThread().getName());
+           System.out.printf("Thread %s------Fail\n",Thread.currentThread().getName());
 
 
      }
@@ -117,11 +131,6 @@ public class Factory extends Thread implements Comparable<Factory>{
    }
 
 
-   public int compareTo(Factory other){
-
-     return 0;//do not finished
-   }
-
    public int getID(){
      return ID;
    }
@@ -135,7 +144,34 @@ public class Factory extends Thread implements Comparable<Factory>{
   public int getDone(){
     return lotDone;
   }
+
+  public int getSize(){
+    return size;
+
+  }
+  
+  public int[] getRequire(){
+    return required;
+  }
+  public int[] getRemain(){
+   
+    return remain;
+  }
+
+  public OneShareMaterial[] getMaterials(){
+    return material;
+  }
     
-    //ขาดทำgetที่เหลือกับ setตัวอื่นที่ไม่อยู่ในconstructor
-}              
-               
+  //ขาดทำgetที่เหลือกับ setตัวอื่นที่ไม่อยู่ในconstructor
+            
+ public int compareTo(Factory other) { 
+        if (this.lotDone > other.lotDone)
+            return 1;
+        else if(this.lotDone < other.lotDone)
+            return -1;
+        else 
+            return 0;
+        
+  }
+ 
+  }  
