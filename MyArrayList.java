@@ -52,7 +52,6 @@ day2 = (ID,product,lotsize);
 for(int i = 0;i<required.length;i++)
     remain[i] = required[i];
 
-
 this.clear();
 for(int k=0;k<day2.length;k++){
   this.add(day2[k]);
@@ -68,9 +67,11 @@ for(int k=0;k<day2.length;k++){
   this.clear();
   for(int i =0;i<n;i++){
     this.add(Next[i]);
-
+    
   }
 
+
+  
 
 
 }
